@@ -8,8 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;  // Se importan ambas últimas librerías para poder realizar el intent.
-import android.view.View;  // Se importan ambas últimas librerías para poder realizar el intent.
+import android.content.Intent;  // Se importan estas últimas librerías para poder realizar el intent.
 import android.widget.EditText; // Este nos servirá para mandar un texto sencillo a la otra Actividad.
 
 public class Manzana extends AppCompatActivity {
@@ -33,35 +32,25 @@ public class Manzana extends AppCompatActivity {
 
     public void onClick(View view){  // El método onClick para brincar al otro Intent.
 
-        Intent i = new Intent(this, Tocino.class);
-        final EditText txtMensaje = (EditText) findViewById(R.id.txtMensaje);
-        String MensajeUsuario = txtMensaje.getText().toString();
-        i.putExtra("MensajeManzana", MensajeUsuario);
-        startActivity(i);
-
-
+        Intent i = new Intent(this, Tocino.class);  // Crea el Intent.
+        final EditText txtMensaje = (EditText) findViewById(R.id.txtMensaje);   // Obtiene el texto inducido en "Manzanas".
+        String MensajeUsuario = txtMensaje.getText().toString();    //  Obtiene el Texto y lo convierte a String.
+        i.putExtra("MensajeManzana", MensajeUsuario);   //  Obtiene cualquier dato en forma de llave/valor.
+                                                        // en este caso, nombre del String y valor.
+        startActivity(i);   // Comienza la clase.
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_manzana, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
